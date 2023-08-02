@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Drawing App</string>
     <string name="cd_brush">Brush to change thickness</string>
+    <string name="gallery_selector">Gallery Selector</string>
+    <string name="undo_selector">Undo Selector</string>
+    <string name="redo_selector">Redo Selector</string>
+    <string name="cd_save_selector">Save Selector</string>
+    <string name="cd_share_selector">Share Selector</string>
 </resources>

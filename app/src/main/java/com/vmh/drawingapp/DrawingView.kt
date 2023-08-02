@@ -22,6 +22,7 @@ class DrawingView(context: Context, attrs: AttributeSet): View(context, attrs) {
     private var mCanvas: Canvas? = null
 
     private var mPaths = ArrayList<CustomPath>()
+    private var mUndoPaths = ArrayList<CustomPath>()
 
     init {
         setUpDrawingCanvas()
@@ -95,9 +96,20 @@ class DrawingView(context: Context, attrs: AttributeSet): View(context, attrs) {
         return true
     }
 
+    fun undoPrevDraw(){
+        if(mPaths.size - 1 >=0){
+            mUndoPaths.add(mPaths.removeAt(mPaths.size - 1))
+            invalidate()
+        }
+    }
+    fun redoPrevDraw(){
+        if(mUndoPaths.size - 1 >=0){
+            mPaths.add(mUndoPaths.removeAt(mUndoPaths.size - 1))
+            invalidate()
+        }
+    }
     fun setBrushSize(newSize: Float){
         mBrushSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,newSize,resources.displayMetrics)
-
         mDrawPaint!!.strokeWidth = mBrushSize
     }
 
